@@ -1,12 +1,14 @@
 pipeline {
     agent { label 'master' }
+    triggers {
+        cron('H 0 2 * * *')
+    }
     stages {
         stage('build') {
             steps {
-                echo "Hello World!"
-                sh "echo Hello from the shell"
-                sh "hostname"
-                sh "uptime"
+                sh "cd /home/haggis/docker"
+                sh "sudo docker-compose pull"
+                sh "sudo docker-compose up -d"
             }
         }
     }
