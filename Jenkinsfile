@@ -6,9 +6,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "cd /home/haggis/docker"
-                sh "sudo docker-compose pull"
-                sh "sudo docker-compose up -d"
+                sh """
+                   cd /home/haggis/docker
+                   sudo docker-compose pull
+                   sudo docker-compose up -d
+                   """
             }
         }
     }
