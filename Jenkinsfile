@@ -9,7 +9,7 @@ pipeline {
                 sh """
                    cd /home/haggis/.config/docker/
                    for dir in *; do zip -r "${dir}.zip" "$dir" --exclude=*duplicati* --exclude=*Backups* --exclude=*MediaCover*; done
-                   for f in $(ls /home/haggis/.config/docker/*.zip); do aws s3 cp $f s3://mik-plex-backups/configbackups/; done
+                   for f in \$(ls /home/haggis/.config/docker/*.zip); do aws s3 cp \$f s3://mik-plex-backups/configbackups/; done
                    rm /home/haggis/.config/docker/*.zip
                    """
             }
