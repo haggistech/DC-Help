@@ -1,15 +1,16 @@
 pipeline {
     agent { label 'master' }
     triggers {
-        cron("H 0 2 * *")
+        cron("H 0 4 * *")
     }
     stages {
         stage('build') {
             steps {
                 sh """
-                   cd /home/haggis/docker
-                   sudo docker-compose pull
-                   sudo docker-compose up -d
+                   cd /home/haggis/.config/docker/
+                   for dir in *; do zip -r "${dir}.zip" "$dir" --exclude=*duplicati* --exclude=*Backups* --exclude=*MediaCover*; done
+                   for f in $(ls /home/haggis/.config/docker/*.zip); do aws s3 cp $f s3://mik-plex-backups/configbackups/; done
+                   rm /home/haggis/.config/docker/*.zip
                    """
             }
         }
@@ -20,3 +21,4 @@ pipeline {
         }
     }
 }
+
