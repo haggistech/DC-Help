@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh """
+                sh """""
                    #!/bin/bash
                    cd /home/haggis/.config/docker/
                    for /i in */
@@ -18,7 +18,7 @@ pipeline {
                      aws s3 cp \$f s3://mik-plex-backups/configbackups/
                    done
                    rm /home/haggis/.config/docker/*.zip
-                   """
+                   """""
             }
         }
         stage('Clean Workspace') {
