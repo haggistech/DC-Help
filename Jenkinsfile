@@ -8,7 +8,7 @@ pipeline {
             steps {
                 timeout(time: 3, unit: 'MINUTES') {
                     retry(5) {
-                        sh './backup.sh'
+                        sh 'sudo ./backup.sh'
                     }
                 }
             }
