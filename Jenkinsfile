@@ -14,8 +14,10 @@ pipeline {
             }
         }
         stage('Archive') {
-            dir('/home/haggis/.config/docker/') {
-                archiveArtifacts artifacts: '**'
+            steps {
+                 dir('/home/haggis/.config/docker/') {
+                     archiveArtifacts artifacts: '**'
+                 }
             }
         }
      	stage('Clean Workspace') {
