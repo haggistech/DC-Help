@@ -9,7 +9,7 @@ pipeline {
                 sh """
                    #!/bin/bash
                    cd /home/haggis/.config/docker/
-                   for i in */
+                   for /i in */
                    do
                    zip -0 -r "\${i%}.zip" "$i" & done
                    wait
