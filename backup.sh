@@ -2,7 +2,7 @@
 cd /home/haggis/.config/docker/
 for i in */
     do
-        zip -0 -r "${i%}.zip" "$i" & done
+        zip -0 -r --exclude=*MediaCover* --exclude=*Backup* --exclude=*duplicati* "${i%}.zip" "$i" & done
     wait
 for f in $(ls /home/haggis/.config/docker/*.zip)
     do
