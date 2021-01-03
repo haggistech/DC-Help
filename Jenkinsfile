@@ -9,6 +9,7 @@ pipeline {
                 timeout(time: 3, unit: 'MINUTES') {
                     retry(5) {
                         sh './backup.sh'
+                }
             }
         }
         stage('Clean Workspace') {
