@@ -13,7 +13,12 @@ pipeline {
                 }
             }
         }
-        stage('Clean Workspace') {
+        stage('Archive') {
+            dir('/home/haggis/.config/docker/') {
+                archiveArtifacts artifacts: '**'
+            }
+        }
+     	stage('Clean Workspace') {
             steps {
                 cleanWs()
             }
