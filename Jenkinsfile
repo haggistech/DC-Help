@@ -7,6 +7,7 @@ pipeline {
         stage('build') {
             steps {
                 sh """
+                   #!/bin/bash
                    cd /home/haggis/.config/docker/
                    for i in */
                    do
