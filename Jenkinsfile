@@ -8,7 +8,7 @@ pipeline {
             steps {
                 timeout(time: 3, unit: 'MINUTES') {
                     retry(2) {
-                    	sh 'sudo ./backup.sh'
+                        sh 'sudo ./backup.sh'
                     }
                 }
             }
@@ -20,7 +20,12 @@ pipeline {
                  }
             }
         }
-     	stage('Clean Workspace') {
+        stage('Upload to S3') {
+            steps {
+                s3Upload(bucket:"mik-plex-backups", path:'/configbackups', includePathPattern:'**/*.zip', workingDir:'/home/haggis/.config/docker')
+            }
+        }
+        stage('Clean Workspace') {
             steps {
                 cleanWs()
             }
