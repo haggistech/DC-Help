@@ -16,7 +16,7 @@ pipeline {
         stage('Archive') {
             steps {
                  dir('/home/haggis/.config/docker/') {
-                     archiveArtifacts artifacts: '**'
+                     archiveArtifacts artifacts: '*.zip'
                  }
             }
         }
