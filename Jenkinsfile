@@ -7,7 +7,7 @@ pipeline {
         stage('build') {
             steps {
                 timeout(time: 3, unit: 'MINUTES') {
-                    retry(5) {
+                    retry(2) {
                     	sh 'sudo ./backup.sh'
                     }
                 }
