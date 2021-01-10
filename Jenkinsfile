@@ -10,7 +10,7 @@ pipeline {
         archivefiles = "$JENKINS_HOME/jobs/DC-Help/branches/Docker-Config-Backups/builds/$BUILD_NUMBER/archive/"
     }
     stages {
-        stage('build') {
+        stage('Run backup script') {
             steps {
                 timeout(time: 3, unit: 'MINUTES') {
                     retry(2) {
