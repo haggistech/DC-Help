@@ -3,6 +3,9 @@ pipeline {
     triggers {
         cron("H 0 4 * *")
     }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
     environment {
         archivefiles = "$JENKINS_HOME/jobs/DC-Help/branches/Docker-Config-Backups/builds/$BUILD_NUMBER/archive/"
     }
@@ -26,9 +29,7 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 withAWS(credentials:'3c7a90de-23e1-49f1-91ec-41a4050a1207') {
-                    sh 'aws s3 ls'
-                    sh 'ls ${archivefiles}'
-                    sh 'ls $workspace'
+                    sh 'aws s3 sync ${archivefiles} s3://mik-plex-backups/configbackups/'
                 }
             }
         }
