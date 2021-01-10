@@ -15,14 +15,14 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                 dir('/home/haggis/.config/docker/') {
-                     archiveArtifacts artifacts: '*.zip'
-                 }
+                dir('/home/haggis/.config/docker/') {
+                    archiveArtifacts artifacts: '*.zip'
+                }
             }
         }
         stage('Upload to S3') {
             steps {
-                s3Upload(bucket:"mik-plex-backups", path:'/configbackups/', includePathPattern:'**/*.zip', workingDir:'/home/haggis/.config/docker')
+                s3Upload acl: 'Private', bucket: 'mik-plex-backups', path:'/configbackups/', includePathPattern:'**/*.zip', workingDir:'/home/haggis/.config/docker'
             }
         }
         stage('Clean Workspace') {
