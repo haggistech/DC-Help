@@ -22,7 +22,9 @@ pipeline {
         }
         stage('Upload to S3') {
             steps {
-                s3Upload acl: 'Private', bucket: 'mik-plex-backups', path: '/configbackups/', includePathPattern: '*.zip', workingDir: '/home/haggis/.config/docker'
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '3c7a90de-23e1-49f1-91ec-41a4050a1207', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    aws s3 ls
+                }
             }
         }
         stage('Clean Workspace') {
