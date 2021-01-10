@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Upload to S3') {
             steps {
-                s3Upload(bucket:"mik-plex-backups", path:'/configbackups', includePathPattern:'**/*.zip', workingDir:'/home/haggis/.config/docker')
+                s3Upload(bucket:"mik-plex-backups", path:'/configbackups/', includePathPattern:'**/*.zip', workingDir:'/home/haggis/.config/docker')
             }
         }
         stage('Clean Workspace') {
