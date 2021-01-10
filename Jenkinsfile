@@ -1,10 +1,10 @@
 pipeline {
-    environment {
-        archivefiles=$JENKINS_HOME/jobs/DC-Help/branches/Docker-Config-Backups/builds/$BUILD_NUMBER/archive/
-    }
     agent { label 'master' }
     triggers {
         cron("H 0 4 * *")
+    }
+    environment {
+        archivefiles=$JENKINS_HOME/jobs/DC-Help/branches/Docker-Config-Backups/builds/$BUILD_NUMBER/archive/
     }
     stages {
         stage('build') {
