@@ -2,5 +2,7 @@
 cd /home/haggis/.config/docker/
 for dir in *
     do
-        zip -r --exclude=*MediaCover* --exclude=*Backup* --exclude=*duplicati* "${dir}.zip" "$dir" & done
+        zip -r --exclude=*MediaCover* --exclude=*Backup* --exclude=*calibre* --exclude=*prowlarr* --exclude=*readarr* --exclude=*radarr/MediaCover* --exclude=*duplicati* "${dir}.zip" "$dir" & done
     wait
+
+rm -rf *.zip
