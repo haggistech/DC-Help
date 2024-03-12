@@ -1,6 +1,9 @@
 pipeline {
+    agent {
+        label 'master || built-in'
+    }
     triggers {
-        cron("H 0 4 * *")
+        cron('H 0 4 * *')
     }
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
