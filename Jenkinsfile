@@ -40,6 +40,7 @@ pipeline {
                 dir('/home/haggis/.config/docker/') {
                     sh 'rm -rf *.zip'
                 }
+            }
         }
         stage('Clean Workspace') {
             steps {
