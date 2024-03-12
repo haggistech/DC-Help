@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Delete Files') {
             steps {
-                    sh 'rm -rf /home/haggis/.config/docker/*.zip'
+                    sh 'sudo rm -rf /home/haggis/.config/docker/*.zip'
             }
         }
         stage('Clean Workspace') {
