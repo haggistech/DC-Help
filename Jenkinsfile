@@ -35,6 +35,12 @@ pipeline {
                 }
             }
         }
+        stage('Delete Files') {
+            steps {
+                dir('/home/haggis/.config/docker/') {
+                    sh 'rm -rf *.zip'
+                }
+        }
         stage('Clean Workspace') {
             steps {
                 cleanWs()
