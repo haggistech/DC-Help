@@ -4,5 +4,3 @@ for dir in *
     do
         zip -r --exclude=*MediaCover* --exclude=*Backup* --exclude=*calibre* --exclude=*prowlarr* --exclude=*readarr* --exclude=*radarr/MediaCover* --exclude=*duplicati* "${dir}.zip" "$dir" & done
     wait
-
-rm -rf *.zip
